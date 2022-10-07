@@ -14,20 +14,28 @@ public class ticketService {
     ticketDAO td = new ticketDaoImpl();
 
     public void create(Employee employee){
+        Ticket ticket = null;
+
         System.out.println("Please enter the amount for your ticket reimbursement request:");
         String a = sc.nextLine();
         int amount = Integer.parseInt(a);
         System.out.println("Please enter the status of your ticket:");
         String status = sc.nextLine();
-        System.out.println("Please enter your employee ID:");
-        int employee1 = sc.nextInt();
+//        System.out.println("Please enter your employee ID:");
+//        int employee1 = sc.nextInt();
 
-        //Ticket ticket = td.createTicket(amount, status, employee1);
+        ticket = new Ticket(amount, status, employee);
+
+        //ticket = td.createTicket(amount, status, employee1);
 
 
-        boolean successful = td.createTicket(amount,status,employee1);
 
-        if(employee1 > 0){
+
+        //boolean successful = td.createTicket(amount,status,employee1);
+        boolean successful = td.createTicket(ticket, employee);
+
+
+        if(successful){
             System.out.println("Your ticket has been submitted!");
         } else {
             System.out.println("Invalid ticket submission");

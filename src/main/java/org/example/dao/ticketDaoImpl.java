@@ -15,17 +15,17 @@ public class ticketDaoImpl implements ticketDAO{
 
 
     @Override
-    public boolean createTicket(String a, String status, Employee employee) {
+    public boolean createTicket(Ticket ticket, Employee employee) {
 
         System.out.println("Called create ticket method");
 
         // System.out.println("called the createTicket method!");
-        int amount = Integer.parseInt(a);
+        // int amount = Integer.parseInt(a);
 
-        Ticket ticket = new Ticket();
+        Ticket ticket = null;
 
         try(Connection conn = connectionUtil.getConnection()) {
-            String sql = "INSERT INTO ticket VALUES (?,?,?)";
+            String sql = "INSERT INTO ticket (amount, status, employee_id) VALUES (?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -45,6 +45,37 @@ public class ticketDaoImpl implements ticketDAO{
         }
         return false;
     }
+
+//    public boolean createTicket() {
+//
+//        System.out.println("Called create ticket method");
+//
+//        // System.out.println("called the createTicket method!");
+//        //int amount = Integer.parseInt(a);
+//
+//        Ticket ticket = new Ticket();
+//
+//        try(Connection conn = connectionUtil.getConnection()) {
+//            String sql = "INSERT INTO ticket (amount, status, employee_id) VALUES (?,?,?)";
+//
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//
+//            stmt.setInt(1, ticket.getAmount());
+//            stmt.setString(2, status);
+//            stmt.setInt(3, employee.getEmployeeId());
+//
+//
+//            int rowsUpdated = stmt.executeUpdate();
+//
+//            if (rowsUpdated == 1) {
+//                return true;
+//            }
+//
+//        } catch (SQLException e){
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     @Override
     public boolean createTicket(int amount, String status, Employee employee) {
