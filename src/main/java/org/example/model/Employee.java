@@ -110,5 +110,8 @@ public class Employee {
     }
 
 
+    public int getEmployeeid() {
+        return 0;
+    }
 }
 

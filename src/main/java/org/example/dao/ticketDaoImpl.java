@@ -6,8 +6,8 @@ import org.example.util.connectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -15,9 +15,12 @@ public class ticketDaoImpl implements ticketDAO{
 
 
     @Override
-    public boolean createTicket(int amount, String status, Employee employee) {
+    public boolean createTicket(String a, String status, Employee employee) {
 
-        System.out.println("called the createTicket method!");
+        System.out.println("Called create ticket method");
+
+        // System.out.println("called the createTicket method!");
+        int amount = Integer.parseInt(a);
 
         Ticket ticket = new Ticket();
 
@@ -28,7 +31,8 @@ public class ticketDaoImpl implements ticketDAO{
 
             stmt.setInt(1, amount);
             stmt.setString(2, status);
-            stmt.setInt(3, employee.getId());
+            stmt.setInt(3, employee.getEmployeeid());
+
 
             int rowsUpdated = stmt.executeUpdate();
 
@@ -43,7 +47,18 @@ public class ticketDaoImpl implements ticketDAO{
     }
 
     @Override
+    public boolean createTicket(int amount, String status, Employee employee) {
+
+        return false;
+    }
+
+    @Override
     public List<Ticket> getAllTickets() {
+        return null;
+    }
+
+    @Override
+    public List<Ticket> getAllTickets(Employee employee) {
 
         System.out.println("Called the getAllTickets method!");
 
@@ -61,12 +76,17 @@ public class ticketDaoImpl implements ticketDAO{
             e.printStackTrace();
         }
 
-        return null;
+        return (List<Ticket>) ticket;
     }
 
     @Override
-    public List<Ticket> getTicketByEmployeeId(int id) {
+    public int getTicketByEmployeeId(int id) {
         System.out.println("Called get tickets by employeeId");
-        return null;
+        return id;
+    }
+
+    @Override
+    public boolean createTicket(int amount, String status, int employee1) {
+        return false;
     }
 }

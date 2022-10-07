@@ -1,15 +1,11 @@
 package org.example.service;
 
 import org.example.model.Employee;
-import org.example.model.Ticket;
-import org.example.dao.employeeDAO;
-import org.example.dao.employeeDaoImpl;
+
 import java.util.Scanner;
 import org.example.dao.ticketDaoImpl;
 import org.example.dao.ticketDAO;
-
-
-import java.util.List;
+import org.example.model.Ticket;
 
 public class ticketService {
 
@@ -17,28 +13,29 @@ public class ticketService {
 
     ticketDAO td = new ticketDaoImpl();
 
-    public Ticket create(Employee employee){
+    public void create(Employee employee){
         System.out.println("Please enter the amount for your ticket reimbursement request:");
         String a = sc.nextLine();
         int amount = Integer.parseInt(a);
         System.out.println("Please enter the status of your ticket:");
         String status = sc.nextLine();
         System.out.println("Please enter your employee ID:");
-        //int employee = sc.nextInt();
+        int employee1 = sc.nextInt();
+
+        //Ticket ticket = td.createTicket(amount, status, employee1);
 
 
-        boolean successful = td.createTicket(amount,status,employee);
+        boolean successful = td.createTicket(amount,status,employee1);
 
-        if(successful){
+        if(employee1 > 0){
             System.out.println("Your ticket has been submitted!");
         } else {
             System.out.println("Invalid ticket submission");
         }
-        return null;
     }
 
 
-    public Employee getAllTickets() {
+    public Employee getAllTickets(Employee loggedEmploy) {
         return null;
     }
 }
