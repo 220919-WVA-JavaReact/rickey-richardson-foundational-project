@@ -20,4 +20,6 @@ public interface ticketDAO {
     boolean createTicket(int amount, String status, int employee1);
 
     boolean createTicket();
+
+    boolean createTicket(Ticket ticket, Employee employee);
 }

@@ -22,16 +22,16 @@ public class ticketDaoImpl implements ticketDAO{
         // System.out.println("called the createTicket method!");
         // int amount = Integer.parseInt(a);
 
-        Ticket ticket = null;
+        // Ticket ticket = null;
 
         try(Connection conn = connectionUtil.getConnection()) {
             String sql = "INSERT INTO ticket (amount, status, employee_id) VALUES (?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setInt(1, amount);
-            stmt.setString(2, status);
-            stmt.setInt(3, employee.getEmployeeid());
+            stmt.setInt(1, ticket.getAmount());
+            stmt.setString(2, ticket.getStatus());
+            stmt.setInt(3, employee.getId());
 
 
             int rowsUpdated = stmt.executeUpdate();
@@ -78,6 +78,11 @@ public class ticketDaoImpl implements ticketDAO{
 //    }
 
     @Override
+    public boolean createTicket(String a, String status, Employee employee) {
+        return false;
+    }
+
+    @Override
     public boolean createTicket(int amount, String status, Employee employee) {
 
         return false;
@@ -118,6 +123,11 @@ public class ticketDaoImpl implements ticketDAO{
 
     @Override
     public boolean createTicket(int amount, String status, int employee1) {
+        return false;
+    }
+
+    @Override
+    public boolean createTicket() {
         return false;
     }
 }

@@ -7,7 +7,8 @@ public class Ticket {
     private int id;
     private int amount;
     private String status;
-    // private int employee_id;
+
+    private int employee_id;
     private Employee employee;
 
     public Ticket() {
@@ -26,10 +27,10 @@ public class Ticket {
         this.status = status;
     }
 
-    public Ticket(int amount, String status, Employee employee1) {
+    public Ticket(int amount, String status, int employee_id) {
         this.amount = amount;
         this.status = status;
-        this.employee = employee1;
+        this.employee_id = employee_id;
     }
 
     @Override

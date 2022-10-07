@@ -24,7 +24,7 @@ public class ticketService {
 //        System.out.println("Please enter your employee ID:");
 //        int employee1 = sc.nextInt();
 
-        ticket = new Ticket(amount, status, employee);
+        ticket = new Ticket(amount, status, employee.getEmployeeid());
 
         //ticket = td.createTicket(amount, status, employee1);
 
