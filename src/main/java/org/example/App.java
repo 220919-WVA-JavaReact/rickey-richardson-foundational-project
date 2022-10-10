@@ -96,10 +96,10 @@ public class App {
                     // create tickets
                     ts.create(LoggedEmploy);
                     break;
-//                case "2":
-//                    ts.getAllTickets(LoggedEmploy);
-//                    break;
                 case "2":
+                    ts.getAllTickets(LoggedEmploy);
+                    break;
+                case "3":
                     // logout
                     break;
                 default:
