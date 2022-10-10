@@ -6,7 +6,7 @@ public class Ticket {
 
     private int id;
     private int amount;
-    private String status;
+    private String reason;
 
     private int employee_id;
     private Employee employee;
@@ -14,22 +14,22 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(int id, int amount, String status, Employee employee) {
+    public Ticket(int id, int amount, String reason, Employee employee) {
         this.id = id;
         this.amount = amount;
-        this.status = status;
+        this.reason = reason;
         this.employee = employee;
     }
 
     public Ticket(int id, int amount, String status) {
         this.id = id;
         this.amount = amount;
-        this.status = status;
+        this.reason = reason;
     }
 
-    public Ticket(int amount, String status, int employee_id) {
+    public Ticket(int amount, String reason, int employee_id) {
         this.amount = amount;
-        this.status = status;
+        this.reason = reason;
         this.employee_id = employee_id;
     }
 
@@ -38,12 +38,12 @@ public class Ticket {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        return id == ticket.id && amount == ticket.amount && status.equals(ticket.status) && employee.equals(ticket.employee);
+        return id == ticket.id && amount == ticket.amount && reason.equals(ticket.reason) && employee.equals(ticket.employee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, status, employee);
+        return Objects.hash(id, amount, reason, employee);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Ticket {
         return "Ticket{" +
                 "id=" + id +
                 ", amount=" + amount +
-                ", status='" + status + '\'' +
+                ", status='" + reason + '\'' +
                 ", employee=" + employee +
                 '}';
     }
@@ -73,11 +73,11 @@ public class Ticket {
     }
 
     public String getStatus() {
-        return status;
+        return reason;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.reason = reason;
     }
 
     public Employee getEmployee() {

@@ -19,12 +19,12 @@ public class ticketService {
         System.out.println("Please enter the amount for your ticket reimbursement request:");
         String a = sc.nextLine();
         int amount = Integer.parseInt(a);
-        System.out.println("Please enter the status of your ticket:");
-        String status = sc.nextLine();
+        System.out.println("Please enter the reason for your reimbursement request:");
+        String reason = sc.nextLine();
 //        System.out.println("Please enter your employee ID:");
 //        int employee1 = sc.nextInt();
 
-        ticket = new Ticket(amount, status, employee.getEmployeeid());
+        ticket = new Ticket(amount, reason, employee.getEmployeeid());
 
         //ticket = td.createTicket(amount, status, employee1);
 

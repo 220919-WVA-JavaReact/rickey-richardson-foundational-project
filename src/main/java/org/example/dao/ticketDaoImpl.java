@@ -17,7 +17,7 @@ public class ticketDaoImpl implements ticketDAO{
     @Override
     public boolean createTicket(Ticket ticket, Employee employee) {
 
-        System.out.println("Called create ticket method");
+        // System.out.println("Called create ticket method");
 
         // System.out.println("called the createTicket method!");
         // int amount = Integer.parseInt(a);
@@ -25,13 +25,14 @@ public class ticketDaoImpl implements ticketDAO{
         // Ticket ticket = null;
 
         try(Connection conn = connectionUtil.getConnection()) {
-            String sql = "INSERT INTO ticket (amount, status, employee_id) VALUES (?,?,?)";
+            String sql = "INSERT INTO ticket (amount, reason, employee_id, status) VALUES (?,?,?,?)";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setInt(1, ticket.getAmount());
             stmt.setString(2, ticket.getStatus());
             stmt.setInt(3, employee.getId());
+            stmt.setString(4, "Pending");
 
 
             int rowsUpdated = stmt.executeUpdate();
@@ -105,7 +106,7 @@ public class ticketDaoImpl implements ticketDAO{
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            // stmt.setInt(1, Employee.getId());
+             stmt.setInt(1, employee.getId());
 
 
         } catch (SQLException e){

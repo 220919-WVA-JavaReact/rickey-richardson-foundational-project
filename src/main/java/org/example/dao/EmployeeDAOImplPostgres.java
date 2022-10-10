@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
+import static java.lang.System.exit;
 
 
 public class EmployeeDAOImplPostgres implements employeeDAO{
@@ -69,6 +70,21 @@ public class EmployeeDAOImplPostgres implements employeeDAO{
 
         Employee employ = new Employee(); // blank teacher object to store all info
 
+//        try (Connection conn = connectionUtil.getConnection()){
+//            String sql = "SELECT * FROM employee WHERE username = ?";
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//            stmt.setString(1, username);
+//
+//            ResultSet rs = stmt.executeQuery();
+//
+//            if (rs.next()){
+//
+//            }
+//
+//        }
+
+
+
 //        Connection conn = connectionUtil.getConnection(); // attempting to connect to db
         try (Connection conn = connectionUtil.getConnection()){ // connecting with try-with-resources
             String sql = "INSERT INTO employee (fname, lname, username, \"password\", email) VALUES (?, ?, ?, ?, ?) RETURNING *"; // our SQL statement to create
@@ -93,12 +109,21 @@ public class EmployeeDAOImplPostgres implements employeeDAO{
                 String pw = rs.getString("password");
                 String e = rs.getString("email");
 
+                // use this for user validation
+                /*SELECT 1
+                FROM table_name
+                WHERE unique_key = value;
+
+                 */
+
                 //create a employee object
                 employ = new Employee(id,receivedFname, receivedLname,receivedUname,pw,e);
             }
 
         } catch(SQLException e){
-            e.printStackTrace();
+            System.out.println("Username taken. Please try again.");
+            exit(0);
+            // e.printStackTrace();
         }
 
         return employ;

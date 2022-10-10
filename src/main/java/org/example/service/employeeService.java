@@ -16,24 +16,68 @@ public class employeeService {
     Scanner sc = new Scanner(System.in);
 
     public Employee login(){
-        System.out.println("Please enter your username:");
-        String username = sc.nextLine(); // saves user input to variable
-        System.out.println("Please enter your password:");
-        String password = sc.nextLine(); // saves user input to variable
+        System.out.println("Are you a manager?" + "\n" + "[1] Yes" + "\n" + "[2] No");
+        String ans = sc.nextLine();
+        if(ans.equals("1")){
+            // System.out.println("Logged in as manager");
+            System.out.println("Please enter your username:");
+            String username = sc.nextLine(); // saves user input to variable
+            System.out.println("Please enter your password:");
+            String password = sc.nextLine(); // saves user input to variable
 
+            Employee manager = ed.getByUsername(username); // calling database to grab info based off username
 
-        Employee employ = ed.getByUsername(username); // calling database to grab info based off username
+            if(manager.getUsername().equals(username)){
+                // System.out.println(username);
+                System.out.println("You have been logged in!");
+                //System.out.println(employ);
 
-        if(employ.getUsername().equals(username)){
-            // System.out.println(username);
-            System.out.println("You have been logged in!");
-            //System.out.println(employ);
+            } else {
+                System.out.println("INVALID LOGIN");
+                //System.out.println(username);
 
-        } else {
-            System.out.println("INVALID LOGIN");
-            //System.out.println(username);
+            }
+            return manager;
+
+            }if (ans.equals("2")){
+            // System.out.println("you are an employee");
+            System.out.println("Please enter your username:");
+            String usernameemploy = sc.nextLine(); // saves user input to variable
+            System.out.println("Please enter your password:");
+            String passwordemploy = sc.nextLine(); // saves user input to variable
+
+            Employee employ = ed.getByUsername(usernameemploy); // calling database to grab info based off username
+
+            if(employ.getUsername().equals(usernameemploy)){
+                // System.out.println(username);
+                System.out.println("You have been logged in!");
+                //System.out.println(employ);
+
         }
-        return employ;
+//            System.out.println("Please enter your username:");
+//            String usernameemploy = sc.nextLine(); // saves user input to variable
+//            System.out.println("Please enter your password:");
+//            String passwordemploy = sc.nextLine(); // saves user input to variable
+//
+//            Employee employ = ed.getByUsername(usernameemploy); // calling database to grab info based off username
+//
+//            if(employ.getUsername().equals(usernameemploy)){
+//                // System.out.println(username);
+//                System.out.println("You have been logged in!");
+//                //System.out.println(employ);
+
+             else {
+                System.out.println("INVALID LOGIN");
+                //System.out.println(username);
+            }
+            return employ;
+
+        }
+
+
+
+
+        return null;
     }
 
     public Employee register(){
