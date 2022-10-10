@@ -97,6 +97,7 @@ public class App {
                     ts.create(LoggedEmploy);
                     break;
                 case "2":
+                    // get all tickets
                     ts.getAllTickets(LoggedEmploy);
                     break;
                 case "3":
